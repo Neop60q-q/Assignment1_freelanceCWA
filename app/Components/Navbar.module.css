@@ -1,16 +1,26 @@
 /* app/Components/Navbar.module.css */
 .container {
-    position: relative;
-  }
- 
-  .hamburger {
+    position: fixed;
+    top: 20px;      /* Distance from the top */
+    right: 20px;    /* Distance from the right */
+    z-index: 1000;  /* Make sure it stays above other content */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.hamburger {
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
     height: 30px;
-  }
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1100; /* Above menu */
+}
  
   .bar, .barOpen {
     width: 100%;

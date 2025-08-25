@@ -11,12 +11,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-dark bg-opacity-75 text-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-gray">
       <div className="container">
-        <Link href="/">
-            CSE3CWA-CSE5006 Blogs ...
-          
-        </Link>
         <div className={styles.container}>
           <div className={styles.hamburger} onClick={toggleMenu}>
             <div className={isOpen ? styles.barOpen : styles.bar}></div>
@@ -35,17 +31,6 @@ const Navbar = () => {
                   Create New Blog
                 </Link>
               </li>
-            <li>
-              <Link href="/About" passHref>
-                About
-              </Link>
-            </li>
-            <li>
-              <Link href="/Contact" passHref>
-                Contact
-              </Link>
-            </li>
-
             </ul>
           </nav>
         </div>
@@ -53,5 +38,6 @@ const Navbar = () => {
     </nav>
   );
 };
+
 
 export default Navbar;
