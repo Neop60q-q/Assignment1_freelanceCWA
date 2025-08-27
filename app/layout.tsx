@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./Components/theme-provider"
+import Footer from './Components/Footer';
 // import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 
 const geistSans = Geist({
@@ -37,7 +37,10 @@ export default function RootLayout({
             enableSystem  
             disableTransitionOnChange
           >
-        {children}
+        <div className="min-h-screen flex flex-col">
+          {children}
+          <Footer />
+        </div>
         </ThemeProvider>
       </body>
     </html>
