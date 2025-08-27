@@ -44,7 +44,6 @@ export default function Home() {
 
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Side - Input */}
           <div className="bg-card border border-border p-6">
             <h2 className="text-2xl font-semibold mb-6">Enter your content</h2>
             
@@ -63,7 +62,7 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Right Side - Code Output */}
+          {/*Code output */}
           <div className="bg-card border border-border p-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-semibold">Generated Code</h2>
@@ -95,21 +94,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Instructions */}
-        <div className="mt-8 bg-card border border-border p-6">
-          <h3 className="text-xl font-semibold mb-4">How to Use:</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-muted-foreground">
-            <div>
-              <strong>1. Enter Content:</strong> Type your content in the text box
-            </div>
-            <div>
-              <strong>2. Generate:</strong> Click "Generate HTML Code" button
-            </div>
-            <div>
-              <strong>3. Download/Copy:</strong> Save the file or copy the code
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

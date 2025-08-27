@@ -32,13 +32,13 @@ const Navbar = () => {
             >
               About
             </Link>
+
             <Link 
               href="/Testpage1" 
               className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
             >
               Testpage1
             </Link>
-
             <Link 
               href="/Testpage2" 
               className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
