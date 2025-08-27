@@ -1,8 +1,8 @@
 'use client';
 import React, { useState } from "react";
 import Navbar from "./Components/navBar";
-import TabCard from "./Components/TabCard";
 import { useTabs } from "./createTab/useTabs";
+import TabCard from "./Components/TabCard";
 
 export default function Home() {
   const [title, setTitle] = useState('');
@@ -10,7 +10,7 @@ export default function Home() {
   const [generatedHtml, setGeneratedHtml] = useState('');
   
   // Use our custom hook instead of manual state management
-  const { tabs, addTab, viewTab } = useTabs();
+  const { tabs, addTab, viewTab, removeTab } = useTabs();
 
   const generateHtml = () => {
     if (!userContent.trim()) {
@@ -128,6 +128,7 @@ export default function Home() {
                   key={tab.id} 
                   tab={tab} 
                   onView={viewTab} 
+                  onDelete={removeTab}
                 />
               ))}
             </div>

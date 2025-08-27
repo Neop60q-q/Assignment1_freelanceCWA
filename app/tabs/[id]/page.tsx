@@ -3,23 +3,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Navbar from '../../Components/navBar';
-import { useTabs } from '../../createTab/useTabs';
-
-type Tab = {
-  id: number;
-  name: string;
-  category: string;
-  date: string;
-  icon: string;
-  url: string;
-  content?: string;
-};
+import { useTabs, Tab as TabType } from '../../createTab/useTabs';
 
 export default function TabDetails() {
   const params = useParams();
   const id = params?.id as string;
   const { getTabById } = useTabs();
-  const [tab, setTab] = useState<Tab | null>(null);
+  const [tab, setTab] = useState<TabType | null>(null);
 
   useEffect(() => {
     if (!id) return;
