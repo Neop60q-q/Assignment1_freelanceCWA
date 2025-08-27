@@ -1,45 +1,56 @@
-// Navbar.tsx
-import React, { useState } from 'react';
+"use client"
+import React from 'react';
 import Link from 'next/link';
-import styles from './Navbar.module.css';
+import { ModeToggle } from './ModeToggle';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false); // read as 'isOpen default false' with setIsOpen to toggle
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-gray">
-      <div className="container">
-        <div className={styles.container}>
-          <div className={styles.hamburger} onClick={toggleMenu}>
-            <div className={isOpen ? styles.barOpen : styles.bar}></div>
-            <div className={isOpen ? styles.barOpen : styles.bar}></div>
-            <div className={isOpen ? styles.barOpen : styles.bar}></div>
+    <nav className="bg-background border-t-2 border-b-2 border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo/Brand */}
+          <div className="flex-shrink-0">
+            <Link href="/" className="text-xl font-bold text-foreground">
+              MyApp
+            </Link>
           </div>
-          <nav className={isOpen ? styles.menuOpen : styles.menu}>
-            <ul>
-              <li>
-                <Link href="/" passHref>
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/Createblog" passHref>
-                  Create New Blog
-                </Link>
-              </li>
-            </ul>
-          </nav>
 
-          
+          {/* Navigation Items */}
+          <div className="flex items-center space-x-8">
+            <Link 
+              href="/" 
+              className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >
+              Home
+            </Link>
+            <Link 
+              href="/about" 
+              className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >
+              About
+            </Link>
+            <Link 
+              href="/services" 
+              className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >
+              Services
+            </Link>
+            <Link 
+              href="/contact" 
+              className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+            >
+              Contact
+            </Link>
+          </div>
+
+          {/* ModeToggle */}
+          <div>
+            <ModeToggle />
+          </div>
         </div>
       </div>
     </nav>
   );
 };
-
 
 export default Navbar;
