@@ -1,24 +1,18 @@
 'use client';
+
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import React, { useState, useEffect } from 'react';
 
-interface TimerProps {
-  isRunning: boolean;
-  onTick: (time: number) => void;
-}
-
-export default function Timer({ isRunning, onTick }: TimerProps) {
+const Timer: React.FC = () => {
   const [time, setTime] = useState(0);
+  const [isRunning, setIsRunning] = useState(true);
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
 
     if (isRunning) {
       intervalId = setInterval(() => {
-        setTime(prevTime => {
-          const newTime = prevTime + 1;
-          onTick(newTime);
-          return newTime;
-        });
+        setTime((prevTime) => prevTime + 1);
       }, 1000);
     }
 
@@ -27,18 +21,25 @@ export default function Timer({ isRunning, onTick }: TimerProps) {
         clearInterval(intervalId);
       }
     };
-  }, [isRunning, onTick]);
+  }, [isRunning]);
 
-  const formatTime = (seconds: number) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+  const formatTime = (timeInSeconds: number): string => {
+    const hours = Math.floor(timeInSeconds / 3600);
+    const minutes = Math.floor((timeInSeconds % 3600) / 60);
+    const seconds = timeInSeconds % 60;
+
+    const pad = (num: number): string => num.toString().padStart(2, '0');
+
+    return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
   };
 
   return (
-    <div className="text-lg font-mono bg-card border border-border rounded-lg px-4 py-2">
-      <span className="text-primary font-semibold">Mission Time: </span>
-      {formatTime(time)}
+    <div className="text-center p-4">
+      <div className="inline-block px-4 py-2 rounded-lg bg-secondary text-secondary-foreground">
+        <span className="text-xl font-mono font-bold">{formatTime(time)}</span>
+      </div>
     </div>
   );
-}
+};
+
+export default Timer;
