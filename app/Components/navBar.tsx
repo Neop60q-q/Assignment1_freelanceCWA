@@ -27,17 +27,17 @@ const Navbar = () => {
               Home
             </Link>
             <Link 
-              href="/about" 
+              href="/aboutPage" 
               className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
             >
               About
             </Link>
 
             <Link 
-              href="/Testpage1" 
+              href="/codeadventurePage" 
               className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
             >
-              Testpage1
+              Code Adventure
             </Link>
             <Link 
               href="/Testpage2" 

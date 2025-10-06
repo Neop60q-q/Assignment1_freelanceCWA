@@ -27,7 +27,7 @@ export default function About() {
               <p className="text-muted-foreground">Video placeholder - Upload your tutorial video here</p>
             </div>
             <p className="text-muted-foreground">
-              This video demonstrates how to use the HTML5 + JS code generator to create interactive components for Moodle LMS.
+              This video demonstrates how to use this website and it intended features.
             </p>
           </div>
         </div>
