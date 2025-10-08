@@ -1,28 +1,31 @@
 'use client';
 
 import React, { useState } from 'react';
+import { gameConfig } from '../config/gameConfig';
 
 interface ProgressBarProps {
-  onStageChange?: (stage: number) => void;
+  currentStage: number;
+  gameStarted?: boolean;
+  onGameStart?: () => void;
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ onStageChange }) => {
-  const [currentStage, setCurrentStage] = useState(0);
-  const [gameStarted, setGameStarted] = useState(false);
-  const totalStages = 3;
-
+const ProgressBar: React.FC<ProgressBarProps> = ({ 
+  currentStage, 
+  gameStarted = false,
+  onGameStart
+}) => {
+  const { totalStages } = gameConfig;
   const progress = (currentStage / (totalStages - 1)) * 100;
 
   const startGame = () => {
-    setGameStarted(true);
-    if (onStageChange) onStageChange(currentStage);
+    if (onGameStart) onGameStart();
   };
 
   return (
     <div className="w-full max-w-3xl mx-auto p-4">
       <div className="mb-2 flex justify-between items-center">
         <span className="text-sm font-medium text-primary">
-          Stage {currentStage + 1} of {totalStages}
+          Stage {currentStage} of {totalStages}
         </span>
         <span className="text-sm font-medium text-primary">{Math.round(progress)}%</span>
       </div>

@@ -4,10 +4,25 @@ import Navbar from '../Components/navBar';
 import ProgressBar from '../Components/ProgressBar';
 import Timer from '../Components/Timer';
 import StageNavigation from '../Components/StageNavigation';
+import { gameConfig } from '../config/gameConfig';
 
 export default function CodeAdventure() {
-
+  const [currentStage, setCurrentStage] = React.useState(1);
+  const [gameStarted, setGameStarted] = React.useState(false);
   
+  const handleStageChange = (stage: number) => {
+    setCurrentStage(stage);
+  };
+
+  const handleGameStart = () => {
+    setGameStarted(true);
+  };
+
+  const { totalStages } = gameConfig;
+  const isFirstStage = currentStage <= 0; 
+  const isLastStage = currentStage >= totalStages;
+
+
   return (
     <div className="page-container">
       <Navbar />
@@ -24,12 +39,14 @@ export default function CodeAdventure() {
         </div>
 
         <div className="space-y-6">
-          <ProgressBar onStageChange={handleStageChange} />
+          <ProgressBar 
+            currentStage={currentStage}
+            gameStarted={gameStarted}
+            onGameStart={handleGameStart}
+          />
           <StageNavigation
             currentStage={currentStage}
             onStageChange={handleStageChange}
-            isFirstStage={isFirstStage}
-            isLastStage={isLastStage}
           />
           <Timer />
         </div>
