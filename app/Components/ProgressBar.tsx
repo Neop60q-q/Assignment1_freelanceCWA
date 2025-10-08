@@ -11,7 +11,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ onStageChange }) => {
   const [gameStarted, setGameStarted] = useState(false);
   const totalStages = 3;
 
-  const progress = (currentStage / totalStages) * 100;
+  const progress = (currentStage / (totalStages - 1)) * 100;
 
   const startGame = () => {
     setGameStarted(true);
@@ -22,7 +22,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ onStageChange }) => {
     <div className="w-full max-w-3xl mx-auto p-4">
       <div className="mb-2 flex justify-between items-center">
         <span className="text-sm font-medium text-primary">
-          Stage {currentStage} of {totalStages}
+          Stage {currentStage + 1} of {totalStages}
         </span>
         <span className="text-sm font-medium text-primary">{Math.round(progress)}%</span>
       </div>
@@ -31,7 +31,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ onStageChange }) => {
           className="h-full bg-primary transition-all duration-500 relative"
           style={{ width: `${progress}%` }}
         >
-          {/* Glowing effect for space theme */}
           <div className="absolute inset-0 bg-primary/30"></div>
         </div>
       </div>
@@ -44,7 +43,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ onStageChange }) => {
               ${
                 index < currentStage
                   ? 'bg-primary text-primary-foreground'
-                  : index === currentStage
+                  : index === currentStage 
                   ? 'bg-primary/80 text-primary-foreground'
                   : 'bg-secondary text-secondary-foreground'
               }`}

@@ -1,16 +1,13 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from '../Components/navBar';
 import ProgressBar from '../Components/ProgressBar';
 import Timer from '../Components/Timer';
+import StageNavigation from '../Components/StageNavigation';
 
 export default function CodeAdventure() {
-  const [currentStage, setCurrentStage] = useState(0);
 
-  const handleStageChange = (stage: number) => {
-    setCurrentStage(stage);
-  };
-
+  
   return (
     <div className="page-container">
       <Navbar />
@@ -28,6 +25,12 @@ export default function CodeAdventure() {
 
         <div className="space-y-6">
           <ProgressBar onStageChange={handleStageChange} />
+          <StageNavigation
+            currentStage={currentStage}
+            onStageChange={handleStageChange}
+            isFirstStage={isFirstStage}
+            isLastStage={isLastStage}
+          />
           <Timer />
         </div>
 
@@ -40,3 +43,5 @@ export default function CodeAdventure() {
     </div>
   );
 }
+
+// plan

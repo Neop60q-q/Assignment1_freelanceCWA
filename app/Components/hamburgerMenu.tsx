@@ -20,8 +20,8 @@ const HamburgerMenu = () => {
       <nav className={isOpen ? styles.menuOpen : styles.menu}>
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/Testpage1">Testpage1</a></li>
+          <li><a href="/aboutPage">About</a></li>
+          <li><a href="/codeadventurePage">Code Adventure</a></li>
           <li><a href="/Testpage2">Testpage2</a></li>
         </ul>
       </nav>
