@@ -4,6 +4,7 @@ import Navbar from '../Components/navBar';
 import ProgressBar from '../Components/ProgressBar';
 import Timer from '../Components/Timer';
 import StageNavigation from '../Components/StageNavigation';
+import Stage from '../Components/Stages/Stage';
 import { gameConfig } from '../config/gameConfig';
 
 export default function CodeAdventure() {
@@ -49,10 +50,8 @@ export default function CodeAdventure() {
           <Timer />
         </div>
 
-        <div className="content-box">
-          <div className="min-h-[400px] flex items-center justify-center">
-            <p className="text-muted-foreground">Stage {currentStage} content loading...</p>
-          </div>
+        <div className="content-box p-4">
+          <Stage stageNumber={currentStage} />
         </div>
       </main>
     </div>

@@ -48,7 +48,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
                 index < currentStage
                   ? 'bg-primary text-primary-foreground'
                   : index === currentStage 
-                  ? 'bg-primary/80 text-primary-foreground'
+                  ? 'bg-primary/50 text-primary-foreground'
                   : 'bg-secondary text-secondary-foreground'
               }`}
           >
