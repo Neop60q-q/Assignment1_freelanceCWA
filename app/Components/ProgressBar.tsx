@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { gameConfig } from '../config/gameConfig';
+const { totalStages } = gameConfig;
+
 
 interface ProgressBarProps {
   currentStage: number;
@@ -14,8 +16,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   gameStarted = false,
   onGameStart
 }) => {
-  const { totalStages } = gameConfig;
-  const progress = (currentStage / (totalStages - 1)) * 100;
+  const progress = ((currentStage - 1) / (totalStages - 1)) * 100; // minus 1 to make it starting from 0%
 
   const startGame = () => {
     if (onGameStart) onGameStart();

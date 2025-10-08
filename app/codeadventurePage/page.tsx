@@ -19,8 +19,6 @@ export default function CodeAdventure() {
   };
 
   const { totalStages } = gameConfig;
-  const isFirstStage = currentStage <= 0; 
-  const isLastStage = currentStage >= totalStages;
 
 
   return (

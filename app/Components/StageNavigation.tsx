@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from './ui/button';
 import { gameConfig } from '../config/gameConfig';
+const { totalStages } = gameConfig;
 
 export interface StageNavigationProps {
   currentStage: number;
@@ -9,7 +10,6 @@ export interface StageNavigationProps {
 }
 
 export default function StageNavigation({
-
   currentStage,
   onStageChange,
 
@@ -37,7 +37,7 @@ export default function StageNavigation({
       <Button
         variant="outline"
         onClick={handleNextStage}
-        disabled={currentStage >= 3}
+        disabled={currentStage >= totalStages}
       >
         Next Stage
       </Button>
