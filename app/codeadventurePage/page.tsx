@@ -6,6 +6,7 @@ import Timer from '../Components/Timer';
 import StageNavigation from '../Components/StageNavigation';
 import Stage from '../Components/Stages/Stage';
 import { gameConfig } from '../config/gameConfig';
+import TextEditor from '../Components/Texteditor'; // Import the TextEditor component
 
 export default function CodeAdventure() {
   const [currentStage, setCurrentStage] = React.useState(1);
@@ -53,6 +54,20 @@ export default function CodeAdventure() {
         <div className="content-box p-4">
           <Stage stageNumber={currentStage} />
         </div>
+
+        {/* Add the TextEditor component here */}
+        <TextEditor 
+          stageId={1}  // Unique ID for this stage
+          initialCode="// Your code here"
+          onChange={(newCode) => {
+            console.log('Code changed:', newCode);
+          }}
+          onSave={async (code) => {
+            // This is where you'll add your database save logic later
+            // For example:
+            // await saveCodeToDatabase(stageId, code);
+          }}
+        />
       </main>
     </div>
   );

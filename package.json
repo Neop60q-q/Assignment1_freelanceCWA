@@ -9,8 +9,11 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.4",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-slot": "^1.2.3",
+    "@uiw/codemirror-theme-console": "^4.25.2",
+    "@uiw/react-codemirror": "^4.25.2",
     "bootstrap": "^5.3.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
