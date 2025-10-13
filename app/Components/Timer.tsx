@@ -1,27 +1,31 @@
 'use client';
 
-import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import React, { useState, useEffect } from 'react';
+import { Button } from './ui/button';
 
 const Timer: React.FC = () => {
-  const [time, setTime] = useState(0);
-  const [isRunning, setIsRunning] = useState(true);
+  const [timerCount, setTimer] = useState(60); // Start with 60 seconds
+  const [isPaused, setIsPaused] = useState(true);
+  const [customTime, setCustomTime] = useState('');
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-
-    if (isRunning) {
-      intervalId = setInterval(() => {
-        setTime((prevTime) => prevTime + 1);
+    let interval: NodeJS.Timeout;
+    
+    if (!isPaused) {
+      interval = setInterval(() => {
+        setTimer(lastTimerCount => {
+          if (lastTimerCount <= 0) {
+            clearInterval(interval);
+            setIsPaused(true);
+            return 0;
+          }
+          return lastTimerCount - 1;
+        });
       }, 1000);
     }
 
-    return () => {
-      if (intervalId) {
-        clearInterval(intervalId);
-      }
-    };
-  }, [isRunning]);
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   const formatTime = (timeInSeconds: number): string => {
     const hours = Math.floor(timeInSeconds / 3600);
@@ -33,10 +37,60 @@ const Timer: React.FC = () => {
     return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
   };
 
+  const handleSetCustomTime = () => {
+    const newTime = parseInt(customTime);
+    if (!isNaN(newTime) && newTime > 0) {
+      setTimer(newTime);
+      setCustomTime('');
+    }
+  };
+
+  const handleReset = () => {
+    setTimer(60);
+    setIsPaused(true);
+    setCustomTime('');
+  };
+
   return (
-    <div className="text-center p-4">
+    <div className="text-center p-4 space-y-4">
       <div className="inline-block px-4 py-2 rounded-lg bg-secondary text-secondary-foreground">
-        <span className="text-xl font-mono font-bold">{formatTime(time)}</span>
+        <span className="text-xl font-mono font-bold">{timerCount}</span>
+      </div>
+      
+      <div className="flex flex-col space-y-4">
+        {/* Time Input */}
+        <div className="flex justify-center space-x-2">
+          <input
+            type="number"
+            min="1"
+            value={customTime}
+            onChange={(e) => setCustomTime(e.target.value)}
+            className="w-24 px-2 py-1 border rounded text-center bg-background text-foreground"
+            placeholder="Seconds"
+          />
+          <Button
+            variant="outline"
+            onClick={handleSetCustomTime}
+          >
+            Set Time
+          </Button>
+        </div>
+
+        {/* Control Buttons */}
+        <div className="flex justify-center space-x-2">
+          <Button
+            variant="outline"
+            onClick={() => setIsPaused(!isPaused)}
+          >
+            {isPaused ? 'Start' : 'Pause'}
+          </Button>
+          <Button
+            variant="outline"
+            onClick={handleReset}
+          >
+            Reset
+          </Button>
+        </div>
       </div>
     </div>
   );
