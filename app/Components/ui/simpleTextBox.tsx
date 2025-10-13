@@ -2,6 +2,18 @@
 import React, { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
+
+// Sameple usage with datgabase save integration:
+// <SimpleTextBox
+//   label="Enter your Question:"
+//   placeholder="Enter text..."
+//   storageKey="question_stage_1"
+//   onSave={async (value) => {
+//     // Save to your database
+//     await saveToDatabase(value);
+//   }}
+// />
+
 interface SimpleTextBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;

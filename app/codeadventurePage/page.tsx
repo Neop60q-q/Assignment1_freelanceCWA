@@ -55,19 +55,6 @@ export default function CodeAdventure() {
           <Stage stageNumber={currentStage} />
         </div>
 
-        {/* Add the TextEditor component here */}
-        <TextEditor 
-          stageId={1}  // Unique ID for this stage
-          initialCode="// Your code here"
-          onChange={(newCode) => {
-            console.log('Code changed:', newCode);
-          }}
-          onSave={async (code) => {
-            // This is where you'll add your database save logic later
-            // For example:
-            // await saveCodeToDatabase(stageId, code);
-          }}
-        />
       </main>
     </div>
   );

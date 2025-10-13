@@ -28,7 +28,7 @@ export default function Stage({ stageNumber }: StageProps) {
               <div className="mt-4">
                 <TextEditor 
                   stageId={1}
-                  initialCode="function unlockMainFrame() {\n  // Your code here\n}"
+                  initialCode="// Enter expected answer code input here"
                   onChange={(newCode) => {
                     console.log('Code changed:', newCode);
                   }}
@@ -65,11 +65,6 @@ export default function Stage({ stageNumber }: StageProps) {
             </>
           )}
         </div>
-      </div>
-
-      {/* Placeholder for test results */}
-      <div className="test-results mt-4 p-4 bg-muted rounded">
-        <p className="text-muted-foreground">Test results will appear here</p>
       </div>
     </div>
   );
