@@ -48,8 +48,8 @@ export default function Stage({ stageNumber }: StageProps) {
               <p>Bypass the firewall by fixing this function:</p>
               <pre className="mt-2 bg-background p-2 rounded">
                 {`function bypassFirewall() {
-  // Your code here
-}`}
+                // Your code here
+                }`}
               </pre>
             </>
           )}
@@ -59,17 +59,12 @@ export default function Stage({ stageNumber }: StageProps) {
               <p>Final step - override the escape pod controls:</p>
               <pre className="mt-2 bg-background p-2 rounded">
                 {`function launchEscapePod() {
-  // Your code here
-}`}
+                  // Your code here
+                }`}
               </pre>
             </>
           )}
         </div>
-      </div>
-
-      {/* Placeholder for code editor (we'll add this later) */}
-      <div className="code-editor-area min-h-[200px] bg-muted p-4 rounded">
-        <p className="text-muted-foreground">Code editor will be added here</p>
       </div>
 
       {/* Placeholder for test results */}
