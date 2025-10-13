@@ -1,5 +1,7 @@
 'use client';
 import React from 'react';
+import TextEditor from '../Texteditor';
+import SimpleTextBox from '../ui/simpleTextBox';
 
 interface StageProps {
   stageNumber: number;
@@ -17,14 +19,29 @@ export default function Stage({ stageNumber }: StageProps) {
         <div className="challenge-description bg-muted p-4 rounded">
           {stageNumber === 1 && (
             <>
-              <p>Hack the main security system by completing this code:</p>
-              <pre className="mt-2 bg-background p-2 rounded">
-                {`function unlockMainFrame() {
-  // Your code here
-}`}
-              </pre>
+              <div>
+                <SimpleTextBox
+                  label="Enter your Question:"
+                  placeholder="Enter text..."
+                />
+              </div>
+              <div className="mt-4">
+                <TextEditor 
+                  stageId={1}
+                  initialCode="function unlockMainFrame() {\n  // Your code here\n}"
+                  onChange={(newCode) => {
+                    console.log('Code changed:', newCode);
+                  }}
+                  onSave={async (code) => {
+                    // This is where you'll add your database save logic later
+                    // For example:
+                    // await saveCodeToDatabase(stageId, code);
+                  }}
+                />
+              </div>
             </>
           )}
+
           
           {stageNumber === 2 && (
             <>
