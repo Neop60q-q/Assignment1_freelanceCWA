@@ -1,10 +1,7 @@
 'use client';
-import React, { useState } from 'react';
-import TextEditor from '../Texteditor';
-import SimpleTextBox from '../ui/simpleTextBox';
-import PreviewModal from '../PreviewModal';
-import { Button } from '../ui/button';
+import React from 'react';
 import MultipleChoiceStage from './MultipleChoiceStage';
+import CodeChallengeStage from './CodeChallengeStage';
 
 interface StageProps {
   stageNumber: number;
@@ -12,9 +9,6 @@ interface StageProps {
 }
 
 export default function Stage({ stageNumber }: StageProps) {
-  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const [questionText, setQuestionText] = useState('');
-  const [codeContent, setCodeContent] = useState('');
 
   return (
     <div className="stage-content p-6 bg-card rounded-lg">
@@ -25,41 +19,9 @@ export default function Stage({ stageNumber }: StageProps) {
         <p className="text-muted-foreground mb-2">Your mission:</p>
         <div className="challenge-description bg-muted p-4 rounded">
           {stageNumber === 1 && (
-            <>
-              <div>
-                <SimpleTextBox
-                  label="Enter your Question:"
-                  placeholder="Enter text..."
-                  onChange={(e) => setQuestionText(e.target.value)}
-                  storageKey={`question_stage_${stageNumber}`}
-                />
-              </div>
-              <div className="mt-4">
-                <TextEditor 
-                  stageId={1}
-                  initialCode="// Enter expected answer code input here"
-                  onChange={(newCode) => {
-                    setCodeContent(newCode);
-                  }}
-                  onSave={async (code) => {
-                    // This is where you'll add your database save logic later
-                    // For example:
-                    // await saveCodeToDatabase(stageId, code);
-                  }}
-                />
-              </div>
-              <div className="mt-4 flex justify-end">
-                <Button
-                  onClick={() => setIsPreviewOpen(true)}
-                  variant="outline"
-                >
-                  Preview Challenge
-                </Button>
-              </div>
-            </>
+            <CodeChallengeStage stageId={1} />
           )}
 
-          
           {stageNumber === 2 && (
             <>
               <MultipleChoiceStage />
@@ -67,47 +29,10 @@ export default function Stage({ stageNumber }: StageProps) {
           )}
           
           {stageNumber === 3 && (
-            <>
-              <div>
-                <SimpleTextBox
-                  label="Enter your Question:"
-                  placeholder="Enter text..."
-                  onChange={(e) => setQuestionText(e.target.value)}
-                  storageKey={`question_stage_${stageNumber}`}
-                />
-              </div>
-              <div className="mt-4">
-                <TextEditor 
-                  stageId={3}
-                  initialCode="Enter expected input code here"
-                  onChange={(newCode) => {
-                    setCodeContent(newCode);
-                  }}
-                  onSave={async (code) => {
-                    // This is where you'll add your database save logic later
-                  }}
-                />
-              </div>
-              <div className="mt-4 flex justify-end">
-                <Button
-                  onClick={() => setIsPreviewOpen(true)}
-                  variant="outline"
-                >
-                  Preview Challenge
-                </Button>
-              </div>
-            </>
+            <CodeChallengeStage stageId={3} />
           )}
         </div>
       </div>
-
-      {/* Preview Modal */}
-      <PreviewModal
-        isOpen={isPreviewOpen}
-        onClose={() => setIsPreviewOpen(false)}
-        questionText={questionText}
-        codeContent={codeContent}
-      />
     </div>
   );
 }
