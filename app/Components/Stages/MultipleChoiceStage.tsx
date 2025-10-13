@@ -2,6 +2,7 @@
 import React from 'react';
 import SimpleTextBox from '../ui/simpleTextBox';
 import { Button } from '../ui/button';
+import PreviewModal from '../PreviewModal';
 
 type MultipleChoiceOption = {
   id: string;
@@ -27,6 +28,8 @@ export default function MultipleChoiceStage({ storageKeyPrefix = 'mcq_stage_2' }
     ],
     correctOptionIds: [],
   });
+
+  const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
 
   const addOption = () => {
     setQuestion(prev => ({
@@ -110,10 +113,21 @@ export default function MultipleChoiceStage({ storageKeyPrefix = 'mcq_stage_2' }
       </div>
 
       <div className="flex justify-end">
-        <Button variant="outline" aria-disabled={!isValid()} disabled={!isValid()}>
+        <Button 
+          variant="outline" 
+          onClick={() => setIsPreviewOpen(true)}
+          aria-disabled={!isValid()} 
+          disabled={!isValid()}
+        >
           Preview Question
         </Button>
       </div>
+
+      <PreviewModal
+        isOpen={isPreviewOpen}
+        onClose={() => setIsPreviewOpen(false)}
+        multipleChoiceQuestion={question}
+      />
     </div>
   );
 }
