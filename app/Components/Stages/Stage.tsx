@@ -1,7 +1,9 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import TextEditor from '../Texteditor';
 import SimpleTextBox from '../ui/simpleTextBox';
+import PreviewModal from '../PreviewModal';
+import { Button } from '../ui/button';
 
 interface StageProps {
   stageNumber: number;
