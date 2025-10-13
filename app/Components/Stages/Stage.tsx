@@ -4,6 +4,7 @@ import TextEditor from '../Texteditor';
 import SimpleTextBox from '../ui/simpleTextBox';
 import PreviewModal from '../PreviewModal';
 import { Button } from '../ui/button';
+import MultipleChoiceStage from './MultipleChoiceStage';
 
 interface StageProps {
   stageNumber: number;
@@ -61,34 +62,7 @@ export default function Stage({ stageNumber }: StageProps) {
           
           {stageNumber === 2 && (
             <>
-              <div>
-                <SimpleTextBox
-                  label="Enter your Question:"
-                  placeholder="Enter text..."
-                  onChange={(e) => setQuestionText(e.target.value)}
-                  storageKey={`question_stage_${stageNumber}`}
-                />
-              </div>
-              <div className="mt-4">
-                <TextEditor 
-                  stageId={2}
-                  initialCode="function bypassFirewall() {\n  // Your code here\n}"
-                  onChange={(newCode) => {
-                    setCodeContent(newCode);
-                  }}
-                  onSave={async (code) => {
-                    // This is where you'll add your database save logic later
-                  }}
-                />
-              </div>
-              <div className="mt-4 flex justify-end">
-                <Button
-                  onClick={() => setIsPreviewOpen(true)}
-                  variant="outline"
-                >
-                  Preview Challenge
-                </Button>
-              </div>
+              <MultipleChoiceStage />
             </>
           )}
           
@@ -105,7 +79,7 @@ export default function Stage({ stageNumber }: StageProps) {
               <div className="mt-4">
                 <TextEditor 
                   stageId={3}
-                  initialCode="function launchEscapePod() {\n  // Your code here\n}"
+                  initialCode="Enter expected input code here"
                   onChange={(newCode) => {
                     setCodeContent(newCode);
                   }}
