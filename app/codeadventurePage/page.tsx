@@ -7,6 +7,7 @@ import StageNavigation from '../Components/StageNavigation';
 import Stage from '../Components/Stages/Stage';
 import { gameConfig } from '../config/gameConfig';
 import TextEditor from '../Components/Texteditor'; // Import the TextEditor component
+import BackgroundUpload from '../Components/BackgroundUpload';
 
 export default function CodeAdventure() {
   const [currentStage, setCurrentStage] = React.useState(1);
@@ -28,14 +29,19 @@ export default function CodeAdventure() {
       <Navbar />
       
       <main className="main-content">
-        <div className="section-header">
-          <h1 className="section-title">
-            Spaceship Breakout
-          </h1>
-          <p className="section-description">
-            You're trapped in a high-security space prison. Use your coding skills to hack
-            the systems, rewire the circuits, and make your escape. But hurry - time is running out!
-          </p>
+        <div className="relative mb-4">
+          <div className="text-center">
+            <h1 className="section-title">
+              Spaceship Breakout
+            </h1>
+            <p className="section-description">
+              You're trapped in a high-security space prison. Use your coding skills to hack
+              the systems, rewire the circuits, and make your escape. But hurry - time is running out!
+            </p>
+          </div>
+          <div className="absolute top-0 right-0">
+            <BackgroundUpload />
+          </div>
         </div>
 
         <div className="space-y-6">
