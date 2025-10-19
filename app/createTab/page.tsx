@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '../Components/navBar';
-import { useTabs } from '../createTab/useTabs';
+import { useTabs } from './useTabs';
 
 const CreateTab = () => {
     // Variables
