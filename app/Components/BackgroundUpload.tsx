@@ -38,25 +38,35 @@ const BackgroundUpload: React.FC<BackgroundUploadProps> = ({
     setIsUploading(true);
 
     try {
-      // Create a local URL for the image
-      const imageUrl = URL.createObjectURL(file);
+      // Convert file to base64 for persistent storage
+      const base64Url = await convertToBase64(file);
       
       // Apply the background
-      applyBackground(imageUrl);
+      applyBackground(base64Url);
       
-      // Store in localStorage for persistence
-      localStorage.setItem('customBackground', imageUrl);
+      // Store in localStorage for persistence (now as base64)
+      localStorage.setItem('customBackground', base64Url);
       
       // Call the callback if provided
-      onBackgroundSet?.(imageUrl);
+      onBackgroundSet?.(base64Url);
       
-      setCurrentBackground(imageUrl);
+      setCurrentBackground(base64Url);
     } catch (error) {
       console.error('Error setting background:', error);
       alert('Error setting background image');
     } finally {
       setIsUploading(false);
     }
+  };
+
+  // Helper function to convert file to base64
+  const convertToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
   };
 
   const applyBackground = (imageUrl: string) => {

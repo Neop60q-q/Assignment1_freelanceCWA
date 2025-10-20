@@ -7,15 +7,40 @@ const Timer: React.FC = () => {
   const [timerCount, setTimer] = useState(60); // Start with 60 seconds
   const [isPaused, setIsPaused] = useState(true);
   const [customTime, setCustomTime] = useState('');
+  const storageKey = 'questionnaire_timer_state';
+
+  // Load saved timer state on component mount
+  useEffect(() => {
+    const savedState = localStorage.getItem(storageKey);
+    if (savedState) {
+      try {
+        const { timerCount: savedTimer, isPaused: savedPaused } = JSON.parse(savedState);
+        setTimer(savedTimer);
+        setIsPaused(savedPaused);
+      } catch (error) {
+        console.error('Error loading timer state:', error);
+      }
+    }
+  }, [storageKey]);
+
+  // Save timer state whenever it changes
+  useEffect(() => {
+    const timerState = {
+      timerCount,
+      isPaused,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(storageKey, JSON.stringify(timerState));
+  }, [timerCount, isPaused, storageKey]);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval> | undefined;
     
     if (!isPaused) {
       interval = setInterval(() => {
         setTimer(lastTimerCount => {
           if (lastTimerCount <= 0) {
-            clearInterval(interval);
+            if (interval) clearInterval(interval);
             setIsPaused(true);
             return 0;
           }
@@ -24,7 +49,9 @@ const Timer: React.FC = () => {
       }, 1000);
     }
 
-    return () => clearInterval(interval);
+    return () => {
+      if (interval) clearInterval(interval);
+    };
   }, [isPaused]);
 
   const formatTime = (timeInSeconds: number): string => {
@@ -76,21 +103,6 @@ const Timer: React.FC = () => {
           </Button>
         </div>
 
-        {/* Control Buttons */}
-        <div className="flex justify-center space-x-2">
-          <Button
-            variant="outline"
-            onClick={() => setIsPaused(!isPaused)}
-          >
-            {isPaused ? 'Start' : 'Pause'}
-          </Button>
-          <Button
-            variant="outline"
-            onClick={handleReset}
-          >
-            Reset
-          </Button>
-        </div>
       </div>
     </div>
   );

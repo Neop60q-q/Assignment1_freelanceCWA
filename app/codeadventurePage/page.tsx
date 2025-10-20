@@ -6,8 +6,9 @@ import Timer from '../Components/Timer';
 import StageNavigation from '../Components/StageNavigation';
 import Stage from '../Components/Stages/Stage';
 import { gameConfig } from '../config/gameConfig';
-import TextEditor from '../Components/Texteditor'; // Import the TextEditor component
+import TextEditor from '../Components/Texteditor'; 
 import BackgroundUpload from '../Components/BackgroundUpload';
+import QuestionnaireSaveLoad from '../Components/QuestionnaireSaveLoad';
 
 export default function CodeAdventure() {
   const [currentStage, setCurrentStage] = React.useState(1);
@@ -59,6 +60,11 @@ export default function CodeAdventure() {
 
         <div className="content-box p-4">
           <Stage stageNumber={currentStage} />
+        </div>
+
+        {/* Questionnaire Save/Load Controls */}
+        <div className="flex justify-center mt-8 mb-4">
+          <QuestionnaireSaveLoad />
         </div>
 
       </main>

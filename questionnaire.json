@@ -1,0 +1,27 @@
+{
+  "title": "Untitled Questionnaire",
+  "timer": {
+    "count": 120,
+    "isPaused": true
+  },
+  "background": "blob:http://localhost:3001/800b1e9c-7b70-4757-9915-9551ceabfcfa",
+  "challenge1": {
+    "question": "What is 2+2?",
+    "code": "console.log(4);"
+  },
+  "challenge2": {
+    "prompt": "Which is correct?",
+    "options": [
+      {
+        "id": "1",
+        "text": "Option A",
+        "isCorrect": false
+      },
+      {
+        "id": "2",
+        "text": "Option B",
+        "isCorrect": false
+      }
+    ]
+  }
+}

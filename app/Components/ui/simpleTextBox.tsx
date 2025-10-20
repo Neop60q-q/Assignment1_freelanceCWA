@@ -25,6 +25,7 @@ interface SimpleTextBoxProps extends React.InputHTMLAttributes<HTMLInputElement>
 const SimpleTextBox = React.forwardRef<HTMLInputElement, SimpleTextBoxProps>(
   ({ className, label, error, storageKey, onSave, onChange, value: propValue, ...props }, ref) => {
     const [value, setValue] = React.useState(propValue || '');
+    const [showSavedToast, setShowSavedToast] = React.useState(false);
 
     // Load saved value from localStorage on component mount
     useEffect(() => {
@@ -80,19 +81,27 @@ const SimpleTextBox = React.forwardRef<HTMLInputElement, SimpleTextBoxProps>(
 
         {/* Optional save button if onSave is provided */}
         {onSave && (
-          <button
-            onClick={async () => {
-              try {
-                await onSave(value as string);
-                console.log('Value saved successfully');
-              } catch (error) {
-                console.error('Error saving value:', error);
-              }
-            }}
-            className="mt-2 px-3 py-1 text-sm bg-primary text-primary-foreground rounded hover:bg-primary/90"
-          >
-            Save
-          </button>
+          <>
+            <button
+              onClick={async () => {
+                try {
+                  await onSave(value as string);
+                  setShowSavedToast(true);
+                  setTimeout(() => setShowSavedToast(false), 2000);
+                } catch (error) {
+                  console.error('Error saving value:', error);
+                }
+              }}
+              className="mt-2 px-3 py-1 text-sm bg-primary text-primary-foreground rounded hover:bg-primary/90"
+            >
+              Save
+            </button>
+            {showSavedToast && (
+              <div className="fixed bottom-4 right-4 z-50 rounded-md border bg-background shadow-lg px-3 py-2 text-sm">
+                Saved
+              </div>
+            )}
+          </>
         )}
       </div>
     );

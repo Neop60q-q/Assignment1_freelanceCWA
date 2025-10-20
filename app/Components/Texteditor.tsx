@@ -4,7 +4,6 @@ import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { consoleLight, consoleDark } from '@uiw/codemirror-theme-console';
 import { useTheme } from 'next-themes';
-import { cookies } from 'next/headers';
 
 interface TextEditorProps {
   stageId: number;  // Unique identifier for each stage
@@ -22,6 +21,7 @@ export default function TextEditor({
   const { theme } = useTheme();
   const [code, setCode] = React.useState(initialCode);
   const storageKey = `stage_${stageId}_code`;
+  const [showSavedToast, setShowSavedToast] = React.useState(false);
 
   // Load locally saved code. For cookies
   useEffect(() => {
@@ -46,7 +46,8 @@ export default function TextEditor({
     if (onSave) {
       try {
         await onSave(code);
-        console.log('Code saved successfully');
+        setShowSavedToast(true);
+        setTimeout(() => setShowSavedToast(false), 2000);
       } catch (error) {
         console.error('Error saving code:', error);
       }
@@ -71,16 +72,20 @@ export default function TextEditor({
         onChange={handleChange}
         className="text-sm"
       />
-      
-      {/* Add a save button if onSave is provided */}
       {onSave && (
-        <div className="flex justify-end p-2 bg-muted/50">
+        <div className="flex items-center justify-end p-2">
           <button
             onClick={handleSave}
-            className="px-3 py-1 text-sm bg-primary text-primary-foreground rounded hover:bg-primary/90"
+            className="mt-2 px-3 py-1 text-sm bg-primary text-primary-foreground rounded hover:bg-primary/90"
           >
             Save
           </button>
+        </div>
+      )}
+
+      {showSavedToast && (
+        <div className="fixed bottom-4 right-4 z-50 rounded-md border bg-background shadow-lg px-3 py-2 text-sm">
+          Saved
         </div>
       )}
     </div>
