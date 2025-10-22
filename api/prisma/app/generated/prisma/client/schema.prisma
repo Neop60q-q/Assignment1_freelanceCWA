@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "app/generated/prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Questionnaire {
+  id          String  @id @default(uuid())
+  title       String
+  timerCount  Int     @default(60)
+  timerPaused Boolean @default(true)
+  background  String? @db.Text
+
+  // Challenge 1 (Code Challenge)
+  challenge1Question String @db.Text
+  challenge1Code     String @db.Text
+
+  // Challenge 2 (Multiple Choice)
+  challenge2Prompt String
+  options          Option[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Option {
+  id              String        @id @default(uuid())
+  questionnaireId String
+  questionnaire   Questionnaire @relation(fields: [questionnaireId], references: [id], onDelete: Cascade)
+  text            String        @db.Text
+  isCorrect       Boolean       @default(false)
+  order           Int           @default(0)
+}

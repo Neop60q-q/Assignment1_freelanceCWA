@@ -21,52 +21,58 @@ export async function OPTIONS() {
   });
 }
 
-// GET – Get all users or one by ID (?id=uuid)
+// Questionnaire model variables:
+// id: number;
+// timer: number;
+// question: string;
+// expectedAnswers: string;
+
+// GET – Get all questionnaires or one by ID (?id=uuid)
 export async function GET(request: NextRequest) {
   try {
     const id = request.nextUrl.searchParams.get('id');
 
     if (id) {
-      const user = await prisma.user.findUnique({
-        where: { id }, // assumes id is UUID string
+      const questionnaire = await prisma.questionnaire.findUnique({
+        where: { id: parseInt(id) }, // assumes id is number
       });
 
-      if (!user) {
-        return new NextResponse('User not found', { status: 404, headers: corsHeaders });
+      if (!questionnaire) {
+        return new NextResponse('Questionnaire not found', { status: 404, headers: corsHeaders });
       }
 
-      return NextResponse.json(user, { headers: corsHeaders });
+      return NextResponse.json(questionnaire, { headers: corsHeaders });
     }
 
-    const users = await prisma.user.findMany();
-    return NextResponse.json(users, { headers: corsHeaders });
+    const questionnaires = await prisma.questionnaire.findMany();
+    return NextResponse.json(questionnaires, { headers: corsHeaders });
   } catch (error) {
     console.error(error);
     return new NextResponse('Server error', { status: 500, headers: corsHeaders });
   }
 }
 
-// POST – Create new user
+// POST – Create new questionnaire
 export async function POST(request: NextRequest) {
   try {
-    const { name, lineStatus } = await request.json();
+    const { timer, question, expectedAnswers } = await request.json();
 
-    if (!name || !lineStatus) {
-      return new NextResponse('Missing name or lineStatus', { status: 400, headers: corsHeaders });
+    if (!timer || !question || !expectedAnswers) {
+      return new NextResponse('Missing timer, question or expectedAnswers', { status: 400, headers: corsHeaders });
     }
 
-    const newUser = await prisma.user.create({
-      data: { name, lineStatus },
+    const newQuestionnaire = await prisma.questionnaire.create({
+      data: { timer, question, expectedAnswers },
     });
 
-    return NextResponse.json(newUser, { status: 201, headers: corsHeaders });
+    return NextResponse.json(newQuestionnaire, { status: 201, headers: corsHeaders });
   } catch (error) {
     console.error(error);
     return new NextResponse('Invalid request body', { status: 400, headers: corsHeaders });
   }
 }
 
-// PATCH – Update user by ID (?id=uuid)
+// PATCH – Update questionnaire by ID (?id=number)
 export async function PATCH(request: NextRequest) {
   try {
     const id = request.nextUrl.searchParams.get('id');
@@ -74,24 +80,25 @@ export async function PATCH(request: NextRequest) {
       return new NextResponse('Missing id', { status: 400, headers: corsHeaders });
     }
 
-    const { name, lineStatus } = await request.json();
+    const { timer, question, expectedAnswers } = await request.json();
 
-    const updatedUser = await prisma.user.update({
-      where: { id },
+    const updatedQuestionnaire = await prisma.questionnaire.update({
+      where: { id: parseInt(id) },
       data: {
-        ...(name !== undefined && { name }),
-        ...(lineStatus !== undefined && { lineStatus }),
+        ...(timer !== undefined && { timer }),
+        ...(question !== undefined && { question }),
+        ...(expectedAnswers !== undefined && { expectedAnswers }),
       },
     });
 
-    return NextResponse.json(updatedUser, { headers: corsHeaders });
+    return NextResponse.json(updatedQuestionnaire, { headers: corsHeaders });
   } catch (error) {
     console.error(error);
     return new NextResponse('Invalid request', { status: 400, headers: corsHeaders });
   }
 }
 
-// DELETE – Delete user by ID (?id=uuid)
+// DELETE – Delete questionnaire by ID (?id=number)
 export async function DELETE(request: NextRequest) {
   try {
     const id = request.nextUrl.searchParams.get('id');
@@ -99,8 +106,8 @@ export async function DELETE(request: NextRequest) {
       return new NextResponse('Missing id', { status: 400, headers: corsHeaders });
     }
 
-    await prisma.user.delete({
-      where: { id },
+    await prisma.questionnaire.delete({
+      where: { id: parseInt(id) },
     });
 
     return new NextResponse(null, { status: 204, headers: corsHeaders });

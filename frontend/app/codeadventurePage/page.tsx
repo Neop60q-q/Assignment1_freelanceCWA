@@ -62,7 +62,6 @@ export default function CodeAdventure() {
           <Stage stageNumber={currentStage} />
         </div>
 
-        {/* Questionnaire Save/Load Controls */}
         <div className="flex justify-center mt-8 mb-4">
           <QuestionnaireSaveLoad />
         </div>
