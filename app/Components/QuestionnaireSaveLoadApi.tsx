@@ -1,8 +1,8 @@
-// app/Components/QuestionnaireSaveLoadApi.tsx - Enhanced version with API integration
+// app/Components/QuestionnaireSaveLoadApi.tsx - API integration using the new question-based structure
 
-import React, { useState } from 'react';
-import { QuestionnaireData, collectQuestionnaireFromStorage, loadQuestionnaireToStorage } from '../lib/questionnaireStorage';
-import { QuestionnaireApiStorage } from '../lib/questionnaireApi';
+'use client';
+import React from 'react';
+import QuestionnaireSaveLoad from './QuestionnaireSaveLoad';
 
 interface QuestionnaireSaveLoadApiProps {
   onSave?: (data: QuestionnaireData) => Promise<QuestionnaireData | null>;
