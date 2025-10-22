@@ -994,15 +994,17 @@ export namespace Prisma {
   }
 
   export type QuestionnaireAvgAggregateOutputType = {
+    id: number | null
     timerCount: number | null
   }
 
   export type QuestionnaireSumAggregateOutputType = {
+    id: number | null
     timerCount: number | null
   }
 
   export type QuestionnaireMinAggregateOutputType = {
-    id: string | null
+    id: number | null
     title: string | null
     timerCount: number | null
     timerPaused: boolean | null
@@ -1015,7 +1017,7 @@ export namespace Prisma {
   }
 
   export type QuestionnaireMaxAggregateOutputType = {
-    id: string | null
+    id: number | null
     title: string | null
     timerCount: number | null
     timerPaused: boolean | null
@@ -1043,10 +1045,12 @@ export namespace Prisma {
 
 
   export type QuestionnaireAvgAggregateInputType = {
+    id?: true
     timerCount?: true
   }
 
   export type QuestionnaireSumAggregateInputType = {
+    id?: true
     timerCount?: true
   }
 
@@ -1177,7 +1181,7 @@ export namespace Prisma {
   }
 
   export type QuestionnaireGroupByOutputType = {
-    id: string
+    id: number
     title: string
     timerCount: number
     timerPaused: boolean
@@ -1276,7 +1280,7 @@ export namespace Prisma {
       options: Prisma.$OptionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      id: number
       title: string
       timerCount: number
       timerPaused: boolean
@@ -1710,7 +1714,7 @@ export namespace Prisma {
    * Fields of the Questionnaire model
    */
   interface QuestionnaireFieldRefs {
-    readonly id: FieldRef<"Questionnaire", 'String'>
+    readonly id: FieldRef<"Questionnaire", 'Int'>
     readonly title: FieldRef<"Questionnaire", 'String'>
     readonly timerCount: FieldRef<"Questionnaire", 'Int'>
     readonly timerPaused: FieldRef<"Questionnaire", 'Boolean'>
@@ -2163,16 +2167,18 @@ export namespace Prisma {
   }
 
   export type OptionAvgAggregateOutputType = {
+    questionnaireId: number | null
     order: number | null
   }
 
   export type OptionSumAggregateOutputType = {
+    questionnaireId: number | null
     order: number | null
   }
 
   export type OptionMinAggregateOutputType = {
     id: string | null
-    questionnaireId: string | null
+    questionnaireId: number | null
     text: string | null
     isCorrect: boolean | null
     order: number | null
@@ -2180,7 +2186,7 @@ export namespace Prisma {
 
   export type OptionMaxAggregateOutputType = {
     id: string | null
-    questionnaireId: string | null
+    questionnaireId: number | null
     text: string | null
     isCorrect: boolean | null
     order: number | null
@@ -2197,10 +2203,12 @@ export namespace Prisma {
 
 
   export type OptionAvgAggregateInputType = {
+    questionnaireId?: true
     order?: true
   }
 
   export type OptionSumAggregateInputType = {
+    questionnaireId?: true
     order?: true
   }
 
@@ -2317,7 +2325,7 @@ export namespace Prisma {
 
   export type OptionGroupByOutputType = {
     id: string
-    questionnaireId: string
+    questionnaireId: number
     text: string
     isCorrect: boolean
     order: number
@@ -2395,7 +2403,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      questionnaireId: string
+      questionnaireId: number
       text: string
       isCorrect: boolean
       order: number
@@ -2824,7 +2832,7 @@ export namespace Prisma {
    */
   interface OptionFieldRefs {
     readonly id: FieldRef<"Option", 'String'>
-    readonly questionnaireId: FieldRef<"Option", 'String'>
+    readonly questionnaireId: FieldRef<"Option", 'Int'>
     readonly text: FieldRef<"Option", 'String'>
     readonly isCorrect: FieldRef<"Option", 'Boolean'>
     readonly order: FieldRef<"Option", 'Int'>
@@ -3313,20 +3321,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'String'
-   */
-  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
-    
-
-
-  /**
-   * Reference to a field of type 'String[]'
-   */
-  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -3337,6 +3331,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'String'
+   */
+  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+  /**
+   * Reference to a field of type 'String[]'
+   */
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
     
 
 
@@ -3382,7 +3390,7 @@ export namespace Prisma {
     AND?: QuestionnaireWhereInput | QuestionnaireWhereInput[]
     OR?: QuestionnaireWhereInput[]
     NOT?: QuestionnaireWhereInput | QuestionnaireWhereInput[]
-    id?: StringFilter<"Questionnaire"> | string
+    id?: IntFilter<"Questionnaire"> | number
     title?: StringFilter<"Questionnaire"> | string
     timerCount?: IntFilter<"Questionnaire"> | number
     timerPaused?: BoolFilter<"Questionnaire"> | boolean
@@ -3410,7 +3418,7 @@ export namespace Prisma {
   }
 
   export type QuestionnaireWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    id?: number
     AND?: QuestionnaireWhereInput | QuestionnaireWhereInput[]
     OR?: QuestionnaireWhereInput[]
     NOT?: QuestionnaireWhereInput | QuestionnaireWhereInput[]
@@ -3448,7 +3456,7 @@ export namespace Prisma {
     AND?: QuestionnaireScalarWhereWithAggregatesInput | QuestionnaireScalarWhereWithAggregatesInput[]
     OR?: QuestionnaireScalarWhereWithAggregatesInput[]
     NOT?: QuestionnaireScalarWhereWithAggregatesInput | QuestionnaireScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Questionnaire"> | string
+    id?: IntWithAggregatesFilter<"Questionnaire"> | number
     title?: StringWithAggregatesFilter<"Questionnaire"> | string
     timerCount?: IntWithAggregatesFilter<"Questionnaire"> | number
     timerPaused?: BoolWithAggregatesFilter<"Questionnaire"> | boolean
@@ -3465,7 +3473,7 @@ export namespace Prisma {
     OR?: OptionWhereInput[]
     NOT?: OptionWhereInput | OptionWhereInput[]
     id?: StringFilter<"Option"> | string
-    questionnaireId?: StringFilter<"Option"> | string
+    questionnaireId?: IntFilter<"Option"> | number
     text?: StringFilter<"Option"> | string
     isCorrect?: BoolFilter<"Option"> | boolean
     order?: IntFilter<"Option"> | number
@@ -3486,7 +3494,7 @@ export namespace Prisma {
     AND?: OptionWhereInput | OptionWhereInput[]
     OR?: OptionWhereInput[]
     NOT?: OptionWhereInput | OptionWhereInput[]
-    questionnaireId?: StringFilter<"Option"> | string
+    questionnaireId?: IntFilter<"Option"> | number
     text?: StringFilter<"Option"> | string
     isCorrect?: BoolFilter<"Option"> | boolean
     order?: IntFilter<"Option"> | number
@@ -3511,14 +3519,13 @@ export namespace Prisma {
     OR?: OptionScalarWhereWithAggregatesInput[]
     NOT?: OptionScalarWhereWithAggregatesInput | OptionScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Option"> | string
-    questionnaireId?: StringWithAggregatesFilter<"Option"> | string
+    questionnaireId?: IntWithAggregatesFilter<"Option"> | number
     text?: StringWithAggregatesFilter<"Option"> | string
     isCorrect?: BoolWithAggregatesFilter<"Option"> | boolean
     order?: IntWithAggregatesFilter<"Option"> | number
   }
 
   export type QuestionnaireCreateInput = {
-    id?: string
     title: string
     timerCount?: number
     timerPaused?: boolean
@@ -3532,7 +3539,7 @@ export namespace Prisma {
   }
 
   export type QuestionnaireUncheckedCreateInput = {
-    id?: string
+    id?: number
     title: string
     timerCount?: number
     timerPaused?: boolean
@@ -3546,7 +3553,6 @@ export namespace Prisma {
   }
 
   export type QuestionnaireUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     timerCount?: IntFieldUpdateOperationsInput | number
     timerPaused?: BoolFieldUpdateOperationsInput | boolean
@@ -3560,7 +3566,7 @@ export namespace Prisma {
   }
 
   export type QuestionnaireUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     timerCount?: IntFieldUpdateOperationsInput | number
     timerPaused?: BoolFieldUpdateOperationsInput | boolean
@@ -3574,7 +3580,7 @@ export namespace Prisma {
   }
 
   export type QuestionnaireCreateManyInput = {
-    id?: string
+    id?: number
     title: string
     timerCount?: number
     timerPaused?: boolean
@@ -3587,7 +3593,6 @@ export namespace Prisma {
   }
 
   export type QuestionnaireUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     timerCount?: IntFieldUpdateOperationsInput | number
     timerPaused?: BoolFieldUpdateOperationsInput | boolean
@@ -3600,7 +3605,7 @@ export namespace Prisma {
   }
 
   export type QuestionnaireUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     timerCount?: IntFieldUpdateOperationsInput | number
     timerPaused?: BoolFieldUpdateOperationsInput | boolean
@@ -3622,7 +3627,7 @@ export namespace Prisma {
 
   export type OptionUncheckedCreateInput = {
     id?: string
-    questionnaireId: string
+    questionnaireId: number
     text: string
     isCorrect?: boolean
     order?: number
@@ -3638,7 +3643,7 @@ export namespace Prisma {
 
   export type OptionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    questionnaireId?: StringFieldUpdateOperationsInput | string
+    questionnaireId?: IntFieldUpdateOperationsInput | number
     text?: StringFieldUpdateOperationsInput | string
     isCorrect?: BoolFieldUpdateOperationsInput | boolean
     order?: IntFieldUpdateOperationsInput | number
@@ -3646,7 +3651,7 @@ export namespace Prisma {
 
   export type OptionCreateManyInput = {
     id?: string
-    questionnaireId: string
+    questionnaireId: number
     text: string
     isCorrect?: boolean
     order?: number
@@ -3661,10 +3666,21 @@ export namespace Prisma {
 
   export type OptionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    questionnaireId?: StringFieldUpdateOperationsInput | string
+    questionnaireId?: IntFieldUpdateOperationsInput | number
     text?: StringFieldUpdateOperationsInput | string
     isCorrect?: BoolFieldUpdateOperationsInput | boolean
     order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3680,17 +3696,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -3753,6 +3758,7 @@ export namespace Prisma {
   }
 
   export type QuestionnaireAvgOrderByAggregateInput = {
+    id?: SortOrder
     timerCount?: SortOrder
   }
 
@@ -3783,7 +3789,24 @@ export namespace Prisma {
   }
 
   export type QuestionnaireSumOrderByAggregateInput = {
+    id?: SortOrder
     timerCount?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -3802,22 +3825,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -3874,6 +3881,7 @@ export namespace Prisma {
   }
 
   export type OptionAvgOrderByAggregateInput = {
+    questionnaireId?: SortOrder
     order?: SortOrder
   }
 
@@ -3894,6 +3902,7 @@ export namespace Prisma {
   }
 
   export type OptionSumOrderByAggregateInput = {
+    questionnaireId?: SortOrder
     order?: SortOrder
   }
 
@@ -3977,6 +3986,17 @@ export namespace Prisma {
     update?: XOR<XOR<QuestionnaireUpdateToOneWithWhereWithoutOptionsInput, QuestionnaireUpdateWithoutOptionsInput>, QuestionnaireUncheckedUpdateWithoutOptionsInput>
   }
 
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -3989,17 +4009,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -4032,23 +4041,6 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -4074,6 +4066,23 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -4171,14 +4180,13 @@ export namespace Prisma {
     OR?: OptionScalarWhereInput[]
     NOT?: OptionScalarWhereInput | OptionScalarWhereInput[]
     id?: StringFilter<"Option"> | string
-    questionnaireId?: StringFilter<"Option"> | string
+    questionnaireId?: IntFilter<"Option"> | number
     text?: StringFilter<"Option"> | string
     isCorrect?: BoolFilter<"Option"> | boolean
     order?: IntFilter<"Option"> | number
   }
 
   export type QuestionnaireCreateWithoutOptionsInput = {
-    id?: string
     title: string
     timerCount?: number
     timerPaused?: boolean
@@ -4191,7 +4199,7 @@ export namespace Prisma {
   }
 
   export type QuestionnaireUncheckedCreateWithoutOptionsInput = {
-    id?: string
+    id?: number
     title: string
     timerCount?: number
     timerPaused?: boolean
@@ -4220,7 +4228,6 @@ export namespace Prisma {
   }
 
   export type QuestionnaireUpdateWithoutOptionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     timerCount?: IntFieldUpdateOperationsInput | number
     timerPaused?: BoolFieldUpdateOperationsInput | boolean
@@ -4233,7 +4240,7 @@ export namespace Prisma {
   }
 
   export type QuestionnaireUncheckedUpdateWithoutOptionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     timerCount?: IntFieldUpdateOperationsInput | number
     timerPaused?: BoolFieldUpdateOperationsInput | boolean

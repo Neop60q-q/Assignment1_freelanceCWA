@@ -144,7 +144,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\21709122\\Desktop\\Assignment1_freelanceCWA\\api\\prisma\\app\\generated\\prisma\\client",
+      "value": "/home/ec2-user/Assignment1_freelanceCWA/api/prisma/app/generated/prisma/client",
       "fromEnvVar": null
     },
     "config": {
@@ -153,16 +153,16 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "rhel-openssl-3.0.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\21709122\\Desktop\\Assignment1_freelanceCWA\\api\\prisma\\schema.prisma",
+    "sourceFilePath": "/home/ec2-user/Assignment1_freelanceCWA/api/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../../../.env"
   },
   "relativePath": "../../../..",
@@ -172,7 +172,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -181,13 +180,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"app/generated/prisma/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Questionnaire {\n  id          String  @id @default(uuid())\n  title       String\n  timerCount  Int     @default(60)\n  timerPaused Boolean @default(true)\n  background  String? @db.Text\n\n  // Challenge 1 (Code Challenge)\n  challenge1Question String @db.Text\n  challenge1Code     String @db.Text\n\n  // Challenge 2 (Multiple Choice)\n  challenge2Prompt String\n  options          Option[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel Option {\n  id              String        @id @default(uuid())\n  questionnaireId String\n  questionnaire   Questionnaire @relation(fields: [questionnaireId], references: [id], onDelete: Cascade)\n  text            String        @db.Text\n  isCorrect       Boolean       @default(false)\n  order           Int           @default(0)\n}\n",
-  "inlineSchemaHash": "88e948e49843a37d9f49c0a413411f55d6828143a89b5d53dabfc7e9d275138c",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"app/generated/prisma/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Questionnaire {\n  id          Int     @id @default(autoincrement()) // Changed to auto-incrementing integer\n  title       String\n  timerCount  Int     @default(60)\n  timerPaused Boolean @default(true)\n  background  String? @db.Text\n\n  // Challenge 1 (Code Challenge)\n  challenge1Question String @db.Text\n  challenge1Code     String @db.Text\n\n  // Challenge 2 (Multiple Choice)\n  challenge2Prompt String\n  options          Option[]\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n\nmodel Option {\n  id              String        @id @default(uuid())\n  questionnaireId Int\n  questionnaire   Questionnaire @relation(fields: [questionnaireId], references: [id], onDelete: Cascade)\n  text            String        @db.Text\n  isCorrect       Boolean       @default(false)\n  order           Int           @default(0)\n}\n",
+  "inlineSchemaHash": "4e9bf2a84cad362b1956c537aa0e999a6cab13861572565a06807c4d9495a6d8",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Questionnaire\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"timerCount\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"timerPaused\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"background\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"challenge1Question\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"challenge1Code\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"challenge2Prompt\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"options\",\"kind\":\"object\",\"type\":\"Option\",\"relationName\":\"OptionToQuestionnaire\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Option\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"questionnaireId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"questionnaire\",\"kind\":\"object\",\"type\":\"Questionnaire\",\"relationName\":\"OptionToQuestionnaire\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isCorrect\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"order\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Questionnaire\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"timerCount\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"timerPaused\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"background\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"challenge1Question\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"challenge1Code\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"challenge2Prompt\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"options\",\"kind\":\"object\",\"type\":\"Option\",\"relationName\":\"OptionToQuestionnaire\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Option\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"questionnaireId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"questionnaire\",\"kind\":\"object\",\"type\":\"Questionnaire\",\"relationName\":\"OptionToQuestionnaire\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"isCorrect\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"order\",\"kind\":\"scalar\",\"type\":\"Int\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

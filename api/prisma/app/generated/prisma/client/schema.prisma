@@ -12,7 +12,7 @@ datasource db {
 }
 
 model Questionnaire {
-  id          String  @id @default(uuid())
+  id          Int     @id @default(autoincrement()) // Changed to auto-incrementing integer
   title       String
   timerCount  Int     @default(60)
   timerPaused Boolean @default(true)
@@ -32,7 +32,7 @@ model Questionnaire {
 
 model Option {
   id              String        @id @default(uuid())
-  questionnaireId String
+  questionnaireId Int
   questionnaire   Questionnaire @relation(fields: [questionnaireId], references: [id], onDelete: Cascade)
   text            String        @db.Text
   isCorrect       Boolean       @default(false)
