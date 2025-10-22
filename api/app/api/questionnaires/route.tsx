@@ -1,7 +1,7 @@
 // api/app/api/questionnaires/route.tsx - Questionnaire CRUD API for frontend integration
 
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/frontend/lib/prisma';
 
 // CORS headers for frontend integration
 const corsHeaders = {

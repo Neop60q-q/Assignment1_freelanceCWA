@@ -2,8 +2,7 @@
 
 
 import { PrismaClient, ChallengeType } from './app/generated/prisma/client';
-
-const prisma = new PrismaClient();
+                                                                            
 
 async function main() {
 //   // Optional: Clear existing data (use with caution, especially in production)

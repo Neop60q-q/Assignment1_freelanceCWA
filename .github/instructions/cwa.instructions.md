@@ -1,7 +1,3 @@
----
-mode: agent
-model: gpt-4
----
 
 # NextJS Development Assistant
 

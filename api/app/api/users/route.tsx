@@ -1,7 +1,7 @@
 // api/app/api/users/route.tsx, provides complete RESTful API for managing users
 
 import { NextRequest, NextResponse } from 'next/server';
-import { prisma } from '@/lib/prisma'; // ✅ Import only
+import { prisma } from '@/frontend/lib/prisma'; // ✅ Import only
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
