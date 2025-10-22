@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
 
     if (id) {
       const questionnaire = await prisma.questionnaire.findUnique({
-        where: { id }, // UUID string
+        where: { id: parseInt(id) }, // Back to parseInt
       });
 
       if (!questionnaire) {
