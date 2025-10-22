@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
 
     if (id) {
       const questionnaire = await prisma.questionnaire.findUnique({
-        where: { id: parseInt(id) }, // assumes id is number
+        where: { id }, // UUID string
       });
 
       if (!questionnaire) {
@@ -55,14 +55,18 @@ export async function GET(request: NextRequest) {
 // POST – Create new questionnaire
 export async function POST(request: NextRequest) {
   try {
-    const { timer, question, expectedAnswers } = await request.json();
+    const { timer, question, expectedAnswer } = await request.json();
 
-    if (!timer || !question || !expectedAnswers) {
-      return new NextResponse('Missing timer, question or expectedAnswers', { status: 400, headers: corsHeaders });
-    }
-
-    const newQuestionnaire = await prisma.questionnaire.create({
-      data: { timer, question, expectedAnswers },
+    if (!timer || !question || !expectedAnswer) {
+      return new NextResponse('Missing timer, question or expectedAnswer', { status: 400, headers: corsHeaders });
+    }    const newQuestionnaire = await prisma.questionnaire.create({
+      data: { 
+        title: question, // Map your 'question' to 'title'
+        timerCount: parseInt(timer), // Map your 'timer' to 'timerCount'
+        challenge1Question: expectedAnswer, // Map your 'expectedAnswer' to 'challenge1Question' 
+        challenge1Code: "// Default code", // Required field, provide default
+        challenge2Prompt: "Default prompt" // Required field, provide default
+      },
     });
 
     return NextResponse.json(newQuestionnaire, { status: 201, headers: corsHeaders });
@@ -72,7 +76,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// PATCH – Update questionnaire by ID (?id=number)
+// PATCH – Update questionnaire by ID (?id=uuid)
 export async function PATCH(request: NextRequest) {
   try {
     const id = request.nextUrl.searchParams.get('id');
@@ -80,14 +84,14 @@ export async function PATCH(request: NextRequest) {
       return new NextResponse('Missing id', { status: 400, headers: corsHeaders });
     }
 
-    const { timer, question, expectedAnswers } = await request.json();
+    const { timer, question, expectedAnswer } = await request.json();
 
     const updatedQuestionnaire = await prisma.questionnaire.update({
-      where: { id: parseInt(id) },
+      where: { id }, // UUID string
       data: {
-        ...(timer !== undefined && { timer }),
-        ...(question !== undefined && { question }),
-        ...(expectedAnswers !== undefined && { expectedAnswers }),
+        ...(timer !== undefined && { timerCount: parseInt(timer) }),
+        ...(question !== undefined && { title: question }),
+        ...(expectedAnswer !== undefined && { challenge1Question: expectedAnswer }),
       },
     });
 
@@ -98,7 +102,7 @@ export async function PATCH(request: NextRequest) {
   }
 }
 
-// DELETE – Delete questionnaire by ID (?id=number)
+// DELETE – Delete questionnaire by ID (?id=uuid)
 export async function DELETE(request: NextRequest) {
   try {
     const id = request.nextUrl.searchParams.get('id');
@@ -107,7 +111,7 @@ export async function DELETE(request: NextRequest) {
     }
 
     await prisma.questionnaire.delete({
-      where: { id: parseInt(id) },
+      where: { id }, // UUID string
     });
 
     return new NextResponse(null, { status: 204, headers: corsHeaders });
