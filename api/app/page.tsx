@@ -1,3 +1,5 @@
+// renders api documentation page with dynamic base URL
+
 'use client';
 
 import React, { useEffect, useState } from 'react';
