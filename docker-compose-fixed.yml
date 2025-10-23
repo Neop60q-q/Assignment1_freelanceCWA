@@ -1,0 +1,57 @@
+# docker-compose.yml, This file ties every Dockerfile 'containers' together
+
+# was unable to build with other docker-compose yml file so had to try this AI gen one
+
+# go read_commandsChee.txt 
+services:
+  app:
+    image: assignment1-frontend
+    ports:
+      - "80:3000"
+    depends_on:
+      - api
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules  # Optional: prevents overwriting node_modules in dev
+    command: npm run dev
+
+  api:
+    image: assignment1-api
+    ports:
+      - "4080:3000"
+    depends_on:
+      - postgres
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://user:password@postgres:5432/mydb
+    volumes:
+      - ./api:/app
+      - /app/node_modules/.prisma  # Optional: same as frontend
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  prisma-studio:
+    image: assignment1-api
+    ports:
+      - "5555:5555"
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/mydb
+    volumes:
+      - ./api:/app
+    command: npx prisma studio --hostname 0.0.0.0 --port 5555
+
+volumes:
+  postgres_data:

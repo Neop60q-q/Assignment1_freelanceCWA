@@ -3,7 +3,7 @@
 'use client'
   import { useEffect, useState } from 'react';
   
-  const APIURL = "http://ec2-52-87-169-227.compute-1.amazonaws.com:4080"; // replace with ec2 instance ip later
+  const APIURL = "http://ec2-54-156-92-118.compute-1.amazonaws.com:4080"; // replace with ec2 instance ip later
   export interface Question {
     id: number;           // Back to number
     timer: number;

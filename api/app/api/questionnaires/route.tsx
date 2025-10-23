@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// PATCH – Update questionnaire by ID (?id=uuid)
+// PATCH – Update questionnaire by ID (?id=number)
 export async function PATCH(request: NextRequest) {
   try {
     const id = request.nextUrl.searchParams.get('id');
@@ -87,7 +87,7 @@ export async function PATCH(request: NextRequest) {
     const { timer, question, expectedAnswer } = await request.json();
 
     const updatedQuestionnaire = await prisma.questionnaire.update({
-      where: { id }, // UUID string
+      where: { id: parseInt(id) }, // Parse to integer
       data: {
         ...(timer !== undefined && { timerCount: parseInt(timer) }),
         ...(question !== undefined && { title: question }),
@@ -102,7 +102,7 @@ export async function PATCH(request: NextRequest) {
   }
 }
 
-// DELETE – Delete questionnaire by ID (?id=uuid)
+// DELETE – Delete questionnaire by ID (?id=number)
 export async function DELETE(request: NextRequest) {
   try {
     const id = request.nextUrl.searchParams.get('id');
@@ -111,7 +111,7 @@ export async function DELETE(request: NextRequest) {
     }
 
     await prisma.questionnaire.delete({
-      where: { id }, // UUID string
+      where: { id: parseInt(id) }, // Parse to integer
     });
 
     return new NextResponse(null, { status: 204, headers: corsHeaders });
