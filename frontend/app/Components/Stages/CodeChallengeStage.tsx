@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import TextEditor from '../Texteditor';
 import SimpleTextBox from '../ui/simpleTextBox';
 import PreviewModal from '../PreviewModal';
+import Challenge1Save from '../Challenge1Save';
 import { Button } from '../ui/button';
 
 interface CodeChallengeStageProps {
@@ -44,13 +45,18 @@ export default function CodeChallengeStage({
           }}
         />
       </div>
-      <div className="mt-4 flex justify-end">
-        <Button
-          onClick={() => setIsPreviewOpen(true)}
-          variant="outline"
-        >
-          Preview Challenge
-        </Button>
+      <div className="mt-4 flex justify-between">
+        <div className="flex gap-2">
+          <Button
+            onClick={() => setIsPreviewOpen(true)}
+            variant="outline"
+          >
+            Preview Challenge
+          </Button>
+        </div>
+        <div>
+          {stageId === 1 && <Challenge1Save />}
+        </div>
       </div>
 
       <PreviewModal
