@@ -128,9 +128,7 @@ exports.Prisma.QuestionnaireScalarFieldEnum = {
   background: 'background',
   challenge1Question: 'challenge1Question',
   challenge1Code: 'challenge1Code',
-  challenge2Prompt: 'challenge2Prompt',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  challenge2Prompt: 'challenge2Prompt'
 };
 
 exports.Prisma.OptionScalarFieldEnum = {

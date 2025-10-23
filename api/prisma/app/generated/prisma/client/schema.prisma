@@ -18,16 +18,11 @@ model Questionnaire {
   timerPaused Boolean @default(true)
   background  String? @db.Text
 
-  // Challenge 1 (Code Challenge)
   challenge1Question String @db.Text
   challenge1Code     String @db.Text
 
-  // Challenge 2 (Multiple Choice)
   challenge2Prompt String
   options          Option[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
 
 model Option {

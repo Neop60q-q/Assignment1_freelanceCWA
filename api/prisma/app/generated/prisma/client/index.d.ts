@@ -1012,8 +1012,6 @@ export namespace Prisma {
     challenge1Question: string | null
     challenge1Code: string | null
     challenge2Prompt: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type QuestionnaireMaxAggregateOutputType = {
@@ -1025,8 +1023,6 @@ export namespace Prisma {
     challenge1Question: string | null
     challenge1Code: string | null
     challenge2Prompt: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type QuestionnaireCountAggregateOutputType = {
@@ -1038,8 +1034,6 @@ export namespace Prisma {
     challenge1Question: number
     challenge1Code: number
     challenge2Prompt: number
-    createdAt: number
-    updatedAt: number
     _all: number
   }
 
@@ -1063,8 +1057,6 @@ export namespace Prisma {
     challenge1Question?: true
     challenge1Code?: true
     challenge2Prompt?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type QuestionnaireMaxAggregateInputType = {
@@ -1076,8 +1068,6 @@ export namespace Prisma {
     challenge1Question?: true
     challenge1Code?: true
     challenge2Prompt?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type QuestionnaireCountAggregateInputType = {
@@ -1089,8 +1079,6 @@ export namespace Prisma {
     challenge1Question?: true
     challenge1Code?: true
     challenge2Prompt?: true
-    createdAt?: true
-    updatedAt?: true
     _all?: true
   }
 
@@ -1189,8 +1177,6 @@ export namespace Prisma {
     challenge1Question: string
     challenge1Code: string
     challenge2Prompt: string
-    createdAt: Date
-    updatedAt: Date
     _count: QuestionnaireCountAggregateOutputType | null
     _avg: QuestionnaireAvgAggregateOutputType | null
     _sum: QuestionnaireSumAggregateOutputType | null
@@ -1221,8 +1207,6 @@ export namespace Prisma {
     challenge1Question?: boolean
     challenge1Code?: boolean
     challenge2Prompt?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     options?: boolean | Questionnaire$optionsArgs<ExtArgs>
     _count?: boolean | QuestionnaireCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["questionnaire"]>
@@ -1236,8 +1220,6 @@ export namespace Prisma {
     challenge1Question?: boolean
     challenge1Code?: boolean
     challenge2Prompt?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
   }, ExtArgs["result"]["questionnaire"]>
 
   export type QuestionnaireSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1249,8 +1231,6 @@ export namespace Prisma {
     challenge1Question?: boolean
     challenge1Code?: boolean
     challenge2Prompt?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
   }, ExtArgs["result"]["questionnaire"]>
 
   export type QuestionnaireSelectScalar = {
@@ -1262,11 +1242,9 @@ export namespace Prisma {
     challenge1Question?: boolean
     challenge1Code?: boolean
     challenge2Prompt?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
   }
 
-  export type QuestionnaireOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "timerCount" | "timerPaused" | "background" | "challenge1Question" | "challenge1Code" | "challenge2Prompt" | "createdAt" | "updatedAt", ExtArgs["result"]["questionnaire"]>
+  export type QuestionnaireOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "timerCount" | "timerPaused" | "background" | "challenge1Question" | "challenge1Code" | "challenge2Prompt", ExtArgs["result"]["questionnaire"]>
   export type QuestionnaireInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     options?: boolean | Questionnaire$optionsArgs<ExtArgs>
     _count?: boolean | QuestionnaireCountOutputTypeDefaultArgs<ExtArgs>
@@ -1288,8 +1266,6 @@ export namespace Prisma {
       challenge1Question: string
       challenge1Code: string
       challenge2Prompt: string
-      createdAt: Date
-      updatedAt: Date
     }, ExtArgs["result"]["questionnaire"]>
     composites: {}
   }
@@ -1722,8 +1698,6 @@ export namespace Prisma {
     readonly challenge1Question: FieldRef<"Questionnaire", 'String'>
     readonly challenge1Code: FieldRef<"Questionnaire", 'String'>
     readonly challenge2Prompt: FieldRef<"Questionnaire", 'String'>
-    readonly createdAt: FieldRef<"Questionnaire", 'DateTime'>
-    readonly updatedAt: FieldRef<"Questionnaire", 'DateTime'>
   }
     
 
@@ -3272,9 +3246,7 @@ export namespace Prisma {
     background: 'background',
     challenge1Question: 'challenge1Question',
     challenge1Code: 'challenge1Code',
-    challenge2Prompt: 'challenge2Prompt',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    challenge2Prompt: 'challenge2Prompt'
   };
 
   export type QuestionnaireScalarFieldEnum = (typeof QuestionnaireScalarFieldEnum)[keyof typeof QuestionnaireScalarFieldEnum]
@@ -3356,20 +3328,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3398,8 +3356,6 @@ export namespace Prisma {
     challenge1Question?: StringFilter<"Questionnaire"> | string
     challenge1Code?: StringFilter<"Questionnaire"> | string
     challenge2Prompt?: StringFilter<"Questionnaire"> | string
-    createdAt?: DateTimeFilter<"Questionnaire"> | Date | string
-    updatedAt?: DateTimeFilter<"Questionnaire"> | Date | string
     options?: OptionListRelationFilter
   }
 
@@ -3412,8 +3368,6 @@ export namespace Prisma {
     challenge1Question?: SortOrder
     challenge1Code?: SortOrder
     challenge2Prompt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     options?: OptionOrderByRelationAggregateInput
   }
 
@@ -3429,8 +3383,6 @@ export namespace Prisma {
     challenge1Question?: StringFilter<"Questionnaire"> | string
     challenge1Code?: StringFilter<"Questionnaire"> | string
     challenge2Prompt?: StringFilter<"Questionnaire"> | string
-    createdAt?: DateTimeFilter<"Questionnaire"> | Date | string
-    updatedAt?: DateTimeFilter<"Questionnaire"> | Date | string
     options?: OptionListRelationFilter
   }, "id">
 
@@ -3443,8 +3395,6 @@ export namespace Prisma {
     challenge1Question?: SortOrder
     challenge1Code?: SortOrder
     challenge2Prompt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     _count?: QuestionnaireCountOrderByAggregateInput
     _avg?: QuestionnaireAvgOrderByAggregateInput
     _max?: QuestionnaireMaxOrderByAggregateInput
@@ -3464,8 +3414,6 @@ export namespace Prisma {
     challenge1Question?: StringWithAggregatesFilter<"Questionnaire"> | string
     challenge1Code?: StringWithAggregatesFilter<"Questionnaire"> | string
     challenge2Prompt?: StringWithAggregatesFilter<"Questionnaire"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Questionnaire"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Questionnaire"> | Date | string
   }
 
   export type OptionWhereInput = {
@@ -3533,8 +3481,6 @@ export namespace Prisma {
     challenge1Question: string
     challenge1Code: string
     challenge2Prompt: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     options?: OptionCreateNestedManyWithoutQuestionnaireInput
   }
 
@@ -3547,8 +3493,6 @@ export namespace Prisma {
     challenge1Question: string
     challenge1Code: string
     challenge2Prompt: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     options?: OptionUncheckedCreateNestedManyWithoutQuestionnaireInput
   }
 
@@ -3560,8 +3504,6 @@ export namespace Prisma {
     challenge1Question?: StringFieldUpdateOperationsInput | string
     challenge1Code?: StringFieldUpdateOperationsInput | string
     challenge2Prompt?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     options?: OptionUpdateManyWithoutQuestionnaireNestedInput
   }
 
@@ -3574,8 +3516,6 @@ export namespace Prisma {
     challenge1Question?: StringFieldUpdateOperationsInput | string
     challenge1Code?: StringFieldUpdateOperationsInput | string
     challenge2Prompt?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     options?: OptionUncheckedUpdateManyWithoutQuestionnaireNestedInput
   }
 
@@ -3588,8 +3528,6 @@ export namespace Prisma {
     challenge1Question: string
     challenge1Code: string
     challenge2Prompt: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type QuestionnaireUpdateManyMutationInput = {
@@ -3600,8 +3538,6 @@ export namespace Prisma {
     challenge1Question?: StringFieldUpdateOperationsInput | string
     challenge1Code?: StringFieldUpdateOperationsInput | string
     challenge2Prompt?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type QuestionnaireUncheckedUpdateManyInput = {
@@ -3613,8 +3549,6 @@ export namespace Prisma {
     challenge1Question?: StringFieldUpdateOperationsInput | string
     challenge1Code?: StringFieldUpdateOperationsInput | string
     challenge2Prompt?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OptionCreateInput = {
@@ -3718,17 +3652,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type OptionListRelationFilter = {
     every?: OptionWhereInput
     some?: OptionWhereInput
@@ -3753,8 +3676,6 @@ export namespace Prisma {
     challenge1Question?: SortOrder
     challenge1Code?: SortOrder
     challenge2Prompt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type QuestionnaireAvgOrderByAggregateInput = {
@@ -3771,8 +3692,6 @@ export namespace Prisma {
     challenge1Question?: SortOrder
     challenge1Code?: SortOrder
     challenge2Prompt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type QuestionnaireMinOrderByAggregateInput = {
@@ -3784,8 +3703,6 @@ export namespace Prisma {
     challenge1Question?: SortOrder
     challenge1Code?: SortOrder
     challenge2Prompt?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type QuestionnaireSumOrderByAggregateInput = {
@@ -3851,20 +3768,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type QuestionnaireScalarRelationFilter = {
@@ -3938,10 +3841,6 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type OptionUpdateManyWithoutQuestionnaireNestedInput = {
@@ -4030,17 +3929,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -4121,20 +4009,6 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type OptionCreateWithoutQuestionnaireInput = {
     id?: string
     text: string
@@ -4194,8 +4068,6 @@ export namespace Prisma {
     challenge1Question: string
     challenge1Code: string
     challenge2Prompt: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type QuestionnaireUncheckedCreateWithoutOptionsInput = {
@@ -4207,8 +4079,6 @@ export namespace Prisma {
     challenge1Question: string
     challenge1Code: string
     challenge2Prompt: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type QuestionnaireCreateOrConnectWithoutOptionsInput = {
@@ -4235,8 +4105,6 @@ export namespace Prisma {
     challenge1Question?: StringFieldUpdateOperationsInput | string
     challenge1Code?: StringFieldUpdateOperationsInput | string
     challenge2Prompt?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type QuestionnaireUncheckedUpdateWithoutOptionsInput = {
@@ -4248,8 +4116,6 @@ export namespace Prisma {
     challenge1Question?: StringFieldUpdateOperationsInput | string
     challenge1Code?: StringFieldUpdateOperationsInput | string
     challenge2Prompt?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OptionCreateManyQuestionnaireInput = {
